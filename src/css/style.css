@@ -7,7 +7,7 @@
 
 
 body {
-    background-image: url('img/cuisine_filter_compress.png');
+    background-image: url('../img/cuisine_filter_compress.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -75,8 +75,7 @@ form a {
     color: var(--color-light);
     border: none;
     padding: 10px;
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
 
 
