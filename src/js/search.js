@@ -1,43 +1,46 @@
-
 const fetchMeal = async () => {
-    await fetch(url + choice)
-      .then(res => res.json())
-      .then(data => meals = data.meals);  
-  };
-  
-  
-  const getMeal = async () => {
-    await fetchMeal();
-    footer.classList.remove("absolute");
-    //Récupération des ingrédients
-    // meals.map((meal) => {
-    //   const ingredients = [];
-    //   for (let i = 1; i <= 20; i++) {
-    //     dish = meal[`strIngredient${i}`];
-    //     measure = meal[`strMeasure${i}`];
-    //     if (dish) {
-    //     ingredients.push(`${dish} - ${measure}`)
-    //     } else {
-    //       break;
-    //     }
-    //  }
-    //  console.log(ingredients);
-     display.innerHTML = meals.map(e =>
+  await fetch(url + choice)
+    .then((res) => res.json())
+    .then((data) => (meals = data.meals));
+};
+
+const getMeal = async () => {
+  await fetchMeal();
+  footer.classList.remove("absolute");
+
+  let ingrStorage = {};
+
+  console.log(meals);
+
+  for (let i = 0; i < meals.length; i++) {
+    let array = [];
+    for (let j = 0; j < 21; j++) {
+      if (meals[i][`strIngredient${j}`]) {
+        let string = `<li>${meals[i][`strIngredient${j}`]} - ${
+          meals[i][`strMeasure${j}`]
+        }</li>`;
+        array.push(string);
+      } else ingrStorage[i] = array;
+    }
+    meals[i].ingrStorage = ingrStorage[i].join("");
+  }
+
+  display.innerHTML = meals.map(
+    (meal) =>
       `
       <div class="meals">
-      <h1>${e.strMeal}</h1>
-      <h2>${e.strArea}</h2>
-      <p><img src=${e.strMealThumb}></p>
-      <p><span>Instructions:</span><br> ${e.strInstructions}</p>
-      <p><a href="${e.strYoutube}" target="_blank"><i class="fas fa-play-circle fa-5x"></i></a>
+      <h1>${meal.strMeal}</h1>
+      <h2>${meal.strArea}</h2>
+      <p><img src=${meal.strMealThumb}></p>
+      <ul>${meal.ingrStorage}</ul>
+      <p><span>Instructions:</span><br> ${meal.strInstructions}</p>
+      <p><a href="${meal.strYoutube}" target="_blank"><i class="fas fa-play-circle fa-5x"></i></a>
       </div>
-      `   
-      )
-  }
-  
-  
-          ingredient.addEventListener('input', (event) => {
-          choice = event.target.value;
-          getMeal();
-        })
-       
+      `
+  );
+};
+
+ingredient.addEventListener("input", (event) => {
+  choice = event.target.value;
+  getMeal();
+});
