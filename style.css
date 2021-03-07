@@ -22,7 +22,7 @@ h1 {
     text-align: center;
     color: var(--color-primary);
     font-family: 'Akaya Telivigala', cursive;
-    font-size: 5vw;
+    font-size: 5em;
     margin: 0;
 }
 
@@ -65,6 +65,11 @@ form input {
     margin: 10px 0 0px 0;
 }
 
+
+form a {
+    color:var(--color-primary);
+}
+
 .random button {
     background-color: var(--color-primary);
     color: var(--color-light);
@@ -80,13 +85,14 @@ form input {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);      
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
 }
 
 
 .meals {
-    grid-column: 4 /span 6;
     background-color: var(--color-background);
     margin: 50px 0;
     padding: 30px;
@@ -94,7 +100,7 @@ form input {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
+    max-width: 800px;
     border-radius: 15px;
     box-shadow: 2px 2px 8px var(--color-dark);
     color: var(--color-light);
@@ -129,16 +135,29 @@ form input {
 }
 
 .meals p {
-    font-size: 0.9em;
+    font-size: 1em;
     color: var(--color-light);
-    margin-bottom: 35px;
+    margin: 35px 0;
     max-width: 500px;
 
 }
 
+p.ingredients-title {
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 1em;
+}
 
-form a {
-    color:var(--color-primary);
+ul.ingredients {
+    margin: 0;
+    font-style: italic;
+}
+
+span {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 
@@ -186,3 +205,7 @@ footer p {
 .static {
     position: static;
 }
+
+
+
+
