@@ -40,7 +40,9 @@ h1 {
 
 .formulaire .titre{
     display: flex;
-    align-items: center;  
+    align-items: center;
+    flex-wrap: wrap;  
+    justify-content: center;
 }
 
 
